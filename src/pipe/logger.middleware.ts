@@ -12,18 +12,26 @@ export interface ReqInfo {
 }
 
 export const reqresLogger = (req, res, next) => {
+
   const reqInfo = {
-    ip: req.ip,
+    ip: req.headers.host,
     headers: req.headers,
-    ua: req.headers['user-agent'],
+    ua: req.headers["user-agent"],
     method: req.method,
     url: req.url,
     query: req.query,
     param: req.param,
-    body: req.body
-  }
+    body: req.body,
+  };
 
-  Logger.log("请求开始：" + JSON.stringify(reqInfo))
+  Logger.log("请求开始：" + JSON.stringify(reqInfo));
   next();
-  Logger.log("响应结束：" + JSON.stringify(res.body));
+
+  const resInfo = {
+    status: res.statusCode,
+    path: res.path,
+    method: res.mothod,
+    message: res.message
+  }
+  Logger.log("响应结束：" + JSON.stringify(resInfo));
 };

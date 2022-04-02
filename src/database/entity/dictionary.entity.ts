@@ -1,15 +1,8 @@
-import {
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-import {
-  ApiProperty,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiProperty, ApiTags } from "@nestjs/swagger";
 
-import { tag } from '../../main.const';
+import { tag } from "../../main.const";
 
 /**
  * 邻接表设计，使用递归设计，类似的设计还有闭包表、路径枚举、嵌套集
@@ -21,40 +14,38 @@ export class Dictionary {
   id: number;
 
   @ApiProperty({
-    description: "概念"
+    description: "概念",
   })
   @Column()
   definition: string;
 
   @ApiProperty({
-    description: "领域"
+    description: "领域",
   })
   @Column()
   domain: string;
 
   @ApiProperty({
-    description: "种属"
+    description: "种属",
   })
   @Column()
   species: string;
 
   @ApiProperty({
-    description: "种差"
+    description: "种差",
   })
   @Column()
   different: string;
 
   @ApiProperty({
-    description: "递归｜分类"
+    description: "递归｜分类",
   })
   @Column()
   is_recursion: boolean;
 
   @ApiProperty({
-    description: "递归父级｜种属父级"
+    description: "递归父级｜种属父级",
   })
   @Column()
   recursion_parent_id: number;
-
-
 }

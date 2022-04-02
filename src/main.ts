@@ -14,20 +14,22 @@ import {
 import { reqresLogger } from './pipe/logger.middleware';
 
 async function bootstrap() {
-
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
-  SwaggerModule.setup('/api', app, SwaggerModule.createDocument(app, swaggerconfig));
+  SwaggerModule.setup(
+    "/api",
+    app,
+    SwaggerModule.createDocument(app, swaggerconfig)
+  );
   app.use(reqresLogger);
 
-
-  directories.forEach(dir => {
+  directories.forEach((dir) => {
     console.log("mnt: " + path.join(os.homedir(), dir));
-    app.useStaticAssets(path.join(os.homedir(), dir),
-      { prefix: `/${dir}/` }
-    )
-  })
+    app.useStaticAssets(path.join(os.homedir(), dir), { prefix: `/${dir}/` });
+  });
   await app.listen(port);
+  console.info(`The app is running at http://localhost:${port}`)
+  console.info(`The document is at http://localhost:${port}/api`)
 }
 
 bootstrap();

@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { APP_FILTER } from '@nestjs/core';
 
+import { IndexController } from './file/index.controller';
 import { HttpExceptionFilter } from './pipe/exception.filter';
-import { IndexController } from './index/index/index.controller';
 
 @Module({
   providers: [
@@ -14,7 +14,5 @@ import { IndexController } from './index/index/index.controller';
   controllers: [IndexController],
 })
 export class AppModule {
-  constructor(
-
-  ) { }
+  constructor() { }
 }
