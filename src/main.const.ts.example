@@ -58,3 +58,11 @@ export const emailconf: MailerOptions = {
     },
   },
 }
+
+export const directories = [
+  "Public",
+  "Documents",
+  "Movies",
+  "Pictures",
+  "Music",
+];
