@@ -34,7 +34,7 @@ export const documentFileFilter = (req, file, callback) => {
 
 
 export const excludeCmdFileFilter = (req, file, callback) => {
-  const cmdFilterTemplete = new RegExp("\.(js|php|cmd|sh)$", "i")
+  const cmdFilterTemplete = new RegExp("\.(php|cmd|sh)$", "i")
   if (file.originalname.match(cmdFilterTemplete)) {
     return callback(new Error('not command files are allowed!'), false);
   }
@@ -50,5 +50,5 @@ export const editFileName = (req, file, callback) => {
     .fill(null)
     .map(() => Math.round(Math.random() * 16).toString(16))
     .join('');
-  callback(null, `${name}-${randomName}${fileExtName}`);
+  callback(null, `${name}${fileExtName}`);
 };

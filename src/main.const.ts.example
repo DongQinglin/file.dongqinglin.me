@@ -3,8 +3,6 @@ import { EjsAdapter } from '@nestjs-modules/mailer/dist/adapters/ejs.adapter';
 import { DocumentBuilder } from '@nestjs/swagger';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
-// server conf
-export const port = 4000;
 
 // swagger conf
 export const tag = {

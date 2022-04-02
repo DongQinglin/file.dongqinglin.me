@@ -1,4 +1,5 @@
 import * as os from 'os';
+import * as pkg from 'package.json';
 import * as path from 'path';
 
 import { NestFactory } from '@nestjs/core';
@@ -8,7 +9,6 @@ import { SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import {
   directories,
-  port,
   swaggerconfig,
 } from './main.const';
 import { reqresLogger } from './pipe/logger.middleware';
@@ -27,9 +27,9 @@ async function bootstrap() {
     console.log("mnt: " + path.join(os.homedir(), dir));
     app.useStaticAssets(path.join(os.homedir(), dir), { prefix: `/${dir}/` });
   });
-  await app.listen(port);
-  console.info(`The app is running at http://localhost:${port}`)
-  console.info(`The document is at http://localhost:${port}/api`)
+  await app.listen(pkg.port);
+  console.info(`The app is running at http://localhost:${pkg.port}`)
+  console.info(`The document is at http://localhost:${pkg.port}/api`)
 }
 
 bootstrap();
